@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Método Solução de Abigail</title>
+  <meta name="description" content="Descubra a sabedoria bíblica que transformou relacionamentos através de 3 passos simples.">
+  
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '4351985021703654');
+    fbq('track', 'ViewContent');
+  </script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --background: hsl(40, 30%, 96%);
+      --foreground: hsl(25, 20%, 20%);
+      --card: hsl(40, 25%, 94%);
+      --primary: hsl(38, 60%, 50%);
+      --primary-foreground: hsl(40, 30%, 98%);
+      --gold: hsl(38, 70%, 50%);
+      --gold-light: hsl(40, 65%, 65%);
+      --ivory: hsl(40, 30%, 96%);
+      --parchment: hsl(38, 25%, 90%);
+      --warm-brown: hsl(25, 35%, 30%);
+      --soft-brown: hsl(25, 20%, 45%);
+      --border: hsl(35, 20%, 85%);
+      --muted-foreground: hsl(25, 15%, 45%);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Lora', serif;
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1rem;
+      overflow: hidden;
+      background: linear-gradient(rgba(250,247,240,0.7), rgba(250,247,240,0.5), rgba(250,247,240,0.8)),
+                  url('http://static.photos/people/1920x1080/1') center/cover;
+    }
+    
+    .hero-content { position: relative; z-index: 10; max-width: 56rem; text-align: center; }
+    
+    .hero-subtitle {
+      display: inline-block;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--warm-brown);
+      margin-bottom: 1rem;
+    }
+    
+    .hero-title {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 700;
+      color: var(--warm-brown);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-title span { color: var(--primary); font-style: italic; }
+    
+    .hero-image {
+      width: 90vw;
+      max-width: 500px;
+      height: auto;
+      border-radius: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    }
+    
+    .hero-text {
+      font-size: 1.125rem;
+      color: var(--warm-brown);
+      max-width: 42rem;
+      margin: 0 auto 2rem;
+    }
+    
+    .steps-preview {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .step-item { display: flex; align-items: center; gap: 0.5rem; color: var(--warm-brown); font-weight: 500; }
+    
+    .step-number {
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--primary-foreground);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem 2.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+      color: var(--warm-brown);
+      border: 1px solid var(--gold-light);
+      border-radius: 0.5rem;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(184,142,58,0.6);
+      transition: all 0.3s ease;
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .cta-button:hover {
+      transform: scale(1.02);
+      filter: brightness(1.1);
+      box-shadow: 0 20px 40px rgba(184,142,58,0.4);
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(184,142,58,0.6), 0 0 40px rgba(184,142,58,0.3); }
+      50% { box-shadow: 0 0 30px rgba(184,142,58,0.8), 0 0 60px rgba(184,142,58,0.5); }
+    }
+    
+    /* Steps Section */
+    .steps { padding: 4rem 1rem; background: var(--card); }
+    
+    .section-title { font-size: clamp(1.875rem, 4vw, 2.5rem); font-weight: 700; text-align: center; color: var(--warm-brown); margin-bottom: 1rem; }
+    
+    .section-subtitle { text-align: center; color: var(--soft-brown); margin-bottom: 3rem; max-width: 36rem; margin-left: auto; margin-right: auto; }
+    
+    .steps-grid { display: grid; gap: 1.5rem; max-width: 64rem; margin: 0 auto; }
+    
+    @media (min-width: 768px) { .steps-grid { grid-template-columns: repeat(3, 1fr); } }
+    
+    .step-card {
+      position: relative;
+      background: var(--background);
+      border-radius: 0.75rem;
+      padding: 1.5rem 2rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .step-card:hover { box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-color: rgba(184,142,58,0.3); }
+    
+    .step-badge {
+      position: absolute;
+      top: -0.75rem;
+      right: -0.75rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--primary);
+      color: var(--primary-foreground);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .step-icon {
+      width: 3rem;
+      height: 3rem;
+      background: rgba(184,142,58,0.1);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    
+    .step-icon svg { width: 1.5rem; height: 1.5rem; color: var(--primary); }
+    
+    .step-card h3 { font-size: 1.25rem; font-weight: 600; color: var(--warm-brown); margin-bottom: 0.75rem; }
+    
+    .step-card p { color: var(--soft-brown); line-height: 1.7; }
+    
+    /* Testimonials Section */
+    .testimonials { padding: 4rem 1rem; background: hsl(25, 35%, 25%); }
+    
+    .testimonials .section-title { color: var(--parchment); }
+    
+    .testimonials .section-subtitle { color: rgba(238,232,220,0.8); }
+    
+    .testimonials-grid { display: grid; gap: 1.5rem; max-width: 64rem; margin: 0 auto; }
+    
+    @media (min-width: 640px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+    
+    .testimonial-card {
+      position: relative;
+      background: rgba(238,232,220,0.9);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(184,142,58,0.2);
+    }
+    
+    .quote-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2rem;
+      height: 2rem;
+      color: rgba(184,142,58,0.3);
+    }
+    
+    .testimonial-text { color: var(--warm-brown); font-style: italic; margin-bottom: 1rem; line-height: 1.7; }
+    
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+    
+    .testimonial-avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(184,142,58,0.4);
+    }
+    
+    .testimonial-name { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--warm-brown); font-size: 0.875rem; }
+    
+    .testimonial-location { font-size: 0.75rem; color: var(--muted-foreground); }
+    
+    /* Bonus Section */
+    .bonus {
+      padding: 4rem 1rem;
+      background: radial-gradient(ellipse at 20% 30%, rgba(238,232,220,0.8), transparent 50%),
+                  radial-gradient(ellipse at 80% 70%, rgba(232,226,214,0.6), transparent 50%),
+                  linear-gradient(180deg, var(--ivory), var(--parchment));
+    }
+    
+    .bonus-grid { display: grid; gap: 2rem; max-width: 64rem; margin: 0 auto; }
+    
+    @media (min-width: 768px) { .bonus-grid { grid-template-columns: repeat(2, 1fr); } }
+    
+    .bonus-card {
+      position: relative;
+      background: linear-gradient(180deg, var(--parchment), var(--ivory));
+      border-radius: 1rem;
+      padding: 1.5rem 2rem;
+      border: 1px solid rgba(184,142,58,0.3);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .bonus-card:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+    
+    .bonus-badge {
+      position: absolute;
+      top: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      padding: 0.375rem 1rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .bonus-badge svg { width: 1rem; height: 1rem; color: var(--warm-brown); }
+    
+    .bonus-badge span { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--warm-brown); font-size: 0.875rem; }
+    
+    .bonus-content { margin-top: 1rem; }
+    
+    .bonus-title { font-size: 1.25rem; font-weight: 700; color: var(--warm-brown); text-align: center; margin-bottom: 0.5rem; }
+    
+    .bonus-subtitle { color: var(--soft-brown); font-weight: 500; text-align: center; font-style: italic; margin-bottom: 1rem; }
+    
+    .bonus-description { color: rgba(62,47,38,0.8); text-align: center; margin-bottom: 1rem; }
+    
+    .bonus-list { list-style: none; margin-bottom: 1rem; }
+    
+    .bonus-list li { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.75rem; color: var(--warm-brown); }
+    
+    .bonus-list li::before { content: "•"; color: var(--gold); margin-top: 0.125rem; }
+    
+    .bonus-footer { color: var(--soft-brown); font-size: 0.875rem; font-style: italic; text-align: center; border-top: 1px solid rgba(184,142,58,0.2); padding-top: 1rem; margin-top: 1rem; }
+    
+    /* Offer Section */
+    .offer { padding: 4rem 1rem; background: var(--card); }
+    
+    .offer-content { max-width: 48rem; margin: 0 auto; text-align: center; }
+    
+    .offer-label { display: inline-block; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); font-weight: 600; margin-bottom: 1rem; }
+    
+    .offer-text { color: var(--soft-brown); margin-bottom: 2rem; max-width: 36rem; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    
+    .price-box {
+      display: inline-block;
+      background: var(--background);
+      border-radius: 1rem;
+      padding: 2rem 2.5rem;
+      border: 1px solid rgba(184,142,58,0.3);
+      box-shadow: 0 0 40px rgba(184,142,58,0.4);
+      margin-bottom: 2rem;
+    }
+    
+    .countdown { margin-bottom: 1.5rem; }
+    
+    .countdown-label { font-size: 0.875rem; color: var(--soft-brown); margin-bottom: 0.5rem; }
+    
+    .countdown-timer {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #f87171;
+      animation: pulse-slow 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-slow { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    
+    .price-row { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
+    
+    .price-old { font-size: 1.5rem; color: var(--muted-foreground); text-decoration: line-through; }
+    
+    .price-discount { background: rgba(184,142,58,0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; }
+    
+    .price-label { font-size: 1.125rem; color: var(--soft-brown); }
+    
+    .price-value { font-family: 'Playfair Display', serif; font-size: 3.75rem; font-weight: 700; color: var(--primary); }
+    
+    .price-note { font-size: 0.875rem; color: var(--muted-foreground); margin-bottom: 1.5rem; }
+    
+    .trust-badges { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.5rem; font-size: 0.875rem; color: var(--soft-brown); }
+    
+    .trust-badge { display: flex; align-items: center; gap: 0.5rem; }
+    
+    .trust-badge svg { width: 1.25rem; height: 1.25rem; color: var(--primary); }
+    
+    /* Footer */
+    .footer { padding: 2rem 1rem; background: var(--warm-brown); color: rgba(250,247,240,0.8); text-align: center; }
+    
+    .footer-title { font-family: 'Playfair Display', serif; font-size: 1.125rem; margin-bottom: 0.5rem; }
+    
+    .footer-copy { font-size: 0.875rem; opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <!-- Meta Pixel noscript fallback -->
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4351985021703654&ev=ViewContent&noscript=1" /></noscript>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-subtitle">Descubra o Segredo</span>
+        <h1 class="hero-title">Método Solução <br><span>de Abigail</span></h1>
+        <img src="https://i.pinimg.com/736x/c4/78/1b/c4781b430f3e3db4acc2eb0ef21ad12d.jpg" alt="Abigail - A mulher sábia" class="hero-image">
+<p class="hero-text">
+          A sabedoria bíblica que transformou relacionamentos, <br>
+          agora nas suas mãos através de <strong>3 passos simples</strong>.
+        </p>
+        
+        <div class="steps-preview">
+          <span class="step-item"><span class="step-number">1</span> Checklist</span>
+          <span style="color: rgba(62,47,38,0.5);">•</span>
+          <span class="step-item"><span class="step-number">2</span> Tom</span>
+          <span style="color: rgba(62,47,38,0.5);">•</span>
+          <span class="step-item"><span class="step-number">3</span> Toque</span>
+        </div>
+        
+        <a href="#offer-section" class="cta-button">Quero Transformar Meu Relacionamento</a>
+      </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps">
+      <div class="container">
+        <h2 class="section-title">Os 3 Passos do Método</h2>
+        <p class="section-subtitle">Simples de aplicar, poderosos no resultado.</p>
+        
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-badge">01</span>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            </div>
+            <h3>Checklist de Abigail</h3>
+            <p>Um guia prático para identificar o momento certo de agir — sem precipitação, sem passividade.</p>
+          </div>
+          
+          <div class="step-card">
+            <span class="step-badge">02</span>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <h3>Tom de Abigail</h3>
+            <p>Aprenda a falar de um jeito que desarma conflitos e abre o coração dele para te ouvir.</p>
+          </div>
+          
+          <div class="step-card">
+            <span class="step-badge">03</span>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 11V6a2 2 0 00-2-2v0a2 2 0 00-2 2v0"/><path d="M14 10V4a2 2 0 00-2-2v0a2 2 0 00-2 2v2"/><path d="M10 10.5V6a2 2 0 00-2-2v0a2 2 0 00-2 2v8"/><path d="M18 8a2 2 0 114 0v6a8 8 0 01-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 012.83-2.82L7 15"/></svg>
+            </div>
+            <h3>Toque de Abigail</h3>
+            <p>Pequenos gestos estratégicos que reacendem conexão e intimidade no dia a dia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="section-title">Mulheres Reais, Resultados Reais</h2>
+        <p class="section-subtitle">Histórias de quem aplicou o método e viu a transformação.</p>
+        
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="testimonial-text">"Ele voltou a me abraçar do nada, sem eu pedir. Depois de 4 anos, parecia que tínhamos voltado a namorar."</p>
+            <div class="testimonial-author">
+              <img src="https://i.pinimg.com/1200x/c3/aa/95/c3aa951fa47f8a07d6007352f8c109f5.jpg" alt="Maria C." class="testimonial-avatar">
+<div>
+                <p class="testimonial-name">Maria C.</p>
+                <p class="testimonial-location">São Paulo</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="testimonial-text">"Eu achava que tinha que falar mais alto pra ser ouvida. Mudei o tom e ele começou a me procurar pra conversar."</p>
+            <div class="testimonial-author">
+              <img src="https://i.pinimg.com/736x/22/df/0b/22df0b541426d3beacae5d260acaecb4.jpg" alt="Juliana R." class="testimonial-avatar">
+<div>
+                <p class="testimonial-name">Juliana R.</p>
+                <p class="testimonial-location">Belo Horizonte</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="testimonial-text">"Simples assim: apliquei o checklist antes de uma briga que ia acontecer. Não brigamos. Ele até me pediu desculpas."</p>
+            <div class="testimonial-author">
+              <img src="https://i.pinimg.com/1200x/35/16/94/351694b45ad749ff1a3eb23366942bb7.jpg" alt="Fernanda S." class="testimonial-avatar">
+<div>
+                <p class="testimonial-name">Fernanda S.</p>
+                <p class="testimonial-location">Curitiba</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="testimonial-text">"Minha sogra notou a diferença. Disse que nunca viu meu marido tão carinhoso comigo. É real."</p>
+            <div class="testimonial-author">
+                        <img src="https://i.pinimg.com/736x/c5/5b/97/c55b979c1499e599aeb22282556a1a1f.jpg" alt="Patrícia M." class="testimonial-avatar">
+<div>
+                <p class="testimonial-name">Patrícia M.</p>
+                <p class="testimonial-location">Rio de Janeiro</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bonus Section -->
+    <section class="bonus">
+      <div class="container">
+            <h2 class="section-title">Garantindo o Método Hoje, Você Tem Acesso a <span style="color: var(--gold);">2 Bônus Especiais</span></h2>
+            
+            <p class="section-subtitle" style="margin-bottom: 3rem;">Bônus exclusivos para quem adquirir hoje</p>
+            
+            <div class="bonus-grid">
+<div class="bonus-card">
+            <div class="bonus-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6"/><path d="M12 12V3"/><path d="M20 7l-8-4-8 4"/><path d="M20 7v.01"/></svg>
+              <span>BÔNUS</span>
+            </div>
+            <div class="bonus-content">
+              <h3 class="bonus-title">🎁 BÔNUS 1 — Guia da Mulher Magnética</h3>
+              <p class="bonus-subtitle">Como se comportar quando ele começa a se reaproximar</p>
+              <p class="bonus-description">Muitas mulheres erram justamente quando o homem começa a voltar. Neste guia você vai descobrir como agir para:</p>
+              <ul class="bonus-list">
+                <li>Não afastar ele de novo</li>
+                <li>Manter a conexão viva</li>
+                <li>Fortalecer a presença e o carinho dele no dia a dia</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="bonus-card">
+            <div class="bonus-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6"/><path d="M12 12V3"/><path d="M20 7l-8-4-8 4"/><path d="M20 7v.01"/></svg>
+              <span>BÔNUS</span>
+            </div>
+            <div class="bonus-content">
+              <h3 class="bonus-title">🎁 BÔNUS 2 — Oração de Abigail</h3>
+              <p class="bonus-subtitle">A oração para os momentos em que tudo parece perdido:</p>
+              <ul class="bonus-list">
+                <li>Ele está difícil demais</li>
+                <li>Você sente que ele não vai mudar</li>
+                <li>O coração está pesado e você não sabe mais o que fazer</li>
+              </ul>
+              <p class="bonus-footer">Essa oração vai acalmar o seu coração e te fazer entrar no estado emocional de Abigail antes de qualquer atitude.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offer Section -->
+    <section class="offer" id="offer-section">
+      <div class="offer-content">
+        <span class="offer-label">Oferta Especial</span>
+        <h2 class="section-title">Transforme Sua Relação Hoje</h2>
+        <p class="offer-text">Acesso imediato ao método completo. Sem enrolação, direto ao que funciona.</p>
+        
+        <div class="price-box">
+          <div class="countdown">
+            <p class="countdown-label">Oferta expira em:</p>
+            <p class="countdown-timer" id="countdown">09:00</p>
+          </div>
+          
+          <div class="price-row">
+            <span class="price-old">R$ 247</span>
+            <span class="price-discount">-81%</span>
+          </div>
+          
+          <p class="price-label">Por apenas</p>
+          <p class="price-value">R$ 47</p>
+          <p class="price-note">pagamento único</p>
+          
+          <a href="https://pay.cakto.com.br/kn8qz9s_697957" target="_blank" rel="noopener noreferrer" class="cta-button">Quero o Método Agora</a>
+        </div>
+        
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Compra 100% segura</span>
+          </div>
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span>Acesso imediato</span>
+          </div>
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            <span>Conteúdo prático</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer-title">Método Solução de Abigail</p>
+    <p class="footer-copy">© 2025 • Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    // Countdown Timer
+    let timeLeft = 9 * 60;
+    const countdownEl = document.getElementById('countdown');
+    
+    function updateCountdown() {
+      if (timeLeft <= 0) {
+        countdownEl.textContent = 'O tempo acabou!';
+        return;
+      }
+      
+      const mins = Math.floor(timeLeft / 60);
+      const secs = timeLeft % 60;
+      countdownEl.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      timeLeft--;
+      setTimeout(updateCountdown, 1000);
+    }
+    
+    updateCountdown();
+    
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
